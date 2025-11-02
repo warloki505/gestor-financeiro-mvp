@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestor Financeiro - Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <h1>Gestor Financeiro</h1>
+      <div class="user-info">Usuário: <span id="userEmail"></span> <button id="logoutBtn">Sair</button></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Saldo atual</h2>
+      <div id="userBalance">R$ 0.00</div>
+    </section>
+
+    <section class="card">
+      <h2>Adicionar transação</h2>
+      <form id="txForm">
+        <input type="number" step="0.01" id="tx-amount" placeholder="Valor (ex: 50.00)" required>
+        <div class="radio-row">
+          <label><input type="radio" name="tx-type" value="expense" checked> Despesa</label>
+          <label><input type="radio" name="tx-type" value="income"> Receita</label>
+        </div>
+        <input type="text" id="tx-category" placeholder="Categoria (ex: alimentação)">
+        <input type="text" id="tx-desc" placeholder="Descrição (opcional)">
+        <button type="submit">Adicionar</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Transações</h2>
+      <div id="transactionsList"></div>
+    </section>
+  </main>
+
+  <script type="module" src="./js/firebase.js"></script>
+  <script type="module" src="./js/auth.js"></script>
+  <script type="module" src="./js/dashboard.js"></script>
+</body>
+</html>
