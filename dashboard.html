@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Gestor Financeiro</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <main class="container">
+    <h1>Dashboard Financeiro</h1>
+
+    <h2 id="saldo">Saldo: R$ 0,00</h2>
+
+    <section class="card">
+      <h3>Adicionar Transação</h3>
+      <form id="add-form">
+        <input type="text" id="descricao" placeholder="Descrição" required />
+        <input type="number" id="valor" placeholder="Valor" required />
+        <select id="tipo">
+          <option value="entrada">Entrada</option>
+          <option value="saida">Saída</option>
+        </select>
+        <button type="submit">Adicionar</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h3>Transações</h3>
+      <ul id="lista"></ul>
+    </section>
+
+    <button id="logout" class="danger">Sair</button>
+  </main>
+
+  <script type="module" src="js/dashboard.js"></script>
+</body>
+
+</html>

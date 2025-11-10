@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestor Financeiro - Login</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <main class="container">
+    <h1>Gestor Financeiro</h1>
+
+    <!-- LOGIN -->
+    <section class="card">
+      <h2>Entrar</h2>
+      <form id="login-form">
+        <input type="email" id="email" placeholder="E-mail" required />
+        <input type="password" id="password" placeholder="Senha" required />
+        <button type="submit">Entrar</button>
+      </form>
+    </section>
+
+    <!-- CADASTRO -->
+    <section class="card">
+      <h2>Cadastrar</h2>
+      <form id="signup-form">
+        <input type="text" id="signup-name" placeholder="Seu nome" required />
+        <input type="email" id="signup-email" placeholder="E-mail" required />
+        <input type="password" id="signup-password" placeholder="Senha (mínimo 6 caracteres)" required />
+        <button type="submit">Criar conta</button>
+      </form>
+    </section>
+
+    <p id="status"></p>
+    <small>Versão Beta - Dados em nuvem (Firebase Firestore)</small>
+  </main>
+
+  <!-- Firebase Config -->
+  <script type="module" src="js/firebase.js"></script>
+
+  <!-- Autenticação -->
+  <script type="module">
+    import { register, login, observeAuth } from "./js/auth.js";
+
+    const statusEl = document.getElementById("status");
+
+    // Cadastro
+    document.getElementById("signup-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const nome = document.getElementById("signup-name").value;
+      const email = document.getElementById("signup-email").value;
+      const password = document.getElementById("signup-password").value;
+
+      const res = await register(email, password, nome);
+      statusEl.innerText = res.message;
+    });
+
+    // Login
+    document.getElementById("login-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      const res = await login(email, password);
+      statusEl.innerText = res.message;
+
+      if (res.success) {
+        location.href = "dashboard.html";
+      }
+    });
+
+    // Se já estiver logado, vai direto para Dashboard
+    observeAuth((user) => {
+      if (user) location.href = "dashboard.html";
+    });
+  </script>
+
+</body>
+
+</html>
