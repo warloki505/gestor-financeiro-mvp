@@ -2,12 +2,9 @@
   --bg: #f3f6f9;
   --card: #fff;
   --primary: #0056b3;
-  --danger: #cc0000;
-  --success: #008a2e;
   --text: #222;
 }
 
-/* RESET */
 * {
   box-sizing: border-box;
 }
@@ -20,59 +17,46 @@ body {
   padding: 0;
 }
 
-/* LAYOUT */
 .container {
-  max-width: 900px;
+  max-width: 980px;
   margin: 20px auto;
   padding: 10px;
 }
 
-/* CARDS */
 .card {
   background: var(--card);
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 16px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
-h1, h2 {
-  margin: 0 0 12px 0;
-  font-weight: 700;
-}
-
-input, select, button {
+input,
+button {
   font-size: 16px;
-  padding: 12px;
-  margin: 6px 0;
+  padding: 10px;
   border-radius: 6px;
   border: 1px solid #ddd;
   width: 100%;
+  margin-bottom: 8px;
 }
 
-/* BOTÕES */
 button {
   background: var(--primary);
   color: #fff;
   border: none;
   cursor: pointer;
-  transition: 0.2s;
 }
 
 button:hover {
-  background: #003f87;
+  opacity: 0.9;
 }
 
-button.danger {
-  background: var(--danger);
-  margin-top: 10px;
+h1,
+h2 {
+  margin: 0 0 12px 0;
 }
 
-button.danger:hover {
-  background: #a70000;
-}
-
-/* TOPO */
 .topbar {
   background: #fff;
   border-bottom: 1px solid #eee;
@@ -86,46 +70,41 @@ button.danger:hover {
 }
 
 #userBalance {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
   margin-top: 8px;
 }
 
-/* LISTA DE TRANSAÇÕES */
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
 .tx-item {
-  background: #ffffff;
-  padding: 12px;
-  margin-bottom: 8px;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
   display: flex;
   justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
 }
 
-.valor-entrada {
-  color: var(--success);
-  font-weight: bold;
+.tx-left {
+  display: flex;
+  flex-direction: column;
 }
 
-.valor-saida {
-  color: var(--danger);
-  font-weight: bold;
+.tx-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .radio-row {
   display: flex;
   gap: 12px;
-  margin: 10px 0;
+  margin: 8px 0;
 }
 
-/* RESPONSIVO */
-@media(max-width: 600px) {
+.btn-remover {
+  margin-top: 4px;
+  background: #c0392b;
+}
+
+@media (max-width: 600px) {
   .topbar .container {
     flex-direction: column;
     gap: 8px;
