@@ -1,41 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard - Gestor Financeiro</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <title>Gestor Financeiro - Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
+  <header class="topbar">
+    <div class="container">
+      <div>
+        <h1>Gestor Financeiro</h1>
+        <div id="userInfo"></div>
+      </div>
+      <div>
+        <strong id="userBalance">Saldo: R$ 0,00</strong><br />
+        <button id="logout">Sair</button>
+      </div>
+    </div>
+  </header>
+
   <main class="container">
-    <h1>Dashboard Financeiro</h1>
-
-    <h2 id="saldo">Saldo: R$ 0,00</h2>
-
     <section class="card">
-      <h3>Adicionar Transação</h3>
+      <h2>Nova transação</h2>
       <form id="add-form">
         <input type="text" id="descricao" placeholder="Descrição" required />
-        <input type="number" id="valor" placeholder="Valor" required />
-        <select id="tipo">
-          <option value="entrada">Entrada</option>
-          <option value="saida">Saída</option>
-        </select>
+        <input type="number" id="valor" placeholder="Valor" step="0.01" required />
+        <div class="radio-row">
+          <label>
+            <input type="radio" name="tipo" value="entrada" checked /> Entrada
+          </label>
+          <label>
+            <input type="radio" name="tipo" value="saida" /> Saída
+          </label>
+        </div>
         <button type="submit">Adicionar</button>
       </form>
     </section>
 
     <section class="card">
-      <h3>Transações</h3>
+      <h2>Transações</h2>
       <ul id="lista"></ul>
     </section>
-
-    <button id="logout" class="danger">Sair</button>
   </main>
 
-  <script type="module" src="js/dashboard.js"></script>
+  <script src="dashboard.js"></script>
 </body>
-
 </html>
