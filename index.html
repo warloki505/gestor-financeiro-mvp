@@ -1,82 +1,101 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gestor Financeiro - Login</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
   <main class="container">
     <h1>Gestor Financeiro</h1>
 
-    <!-- LOGIN -->
     <section class="card">
       <h2>Entrar</h2>
       <form id="login-form">
-        <input type="email" id="email" placeholder="E-mail" required />
-        <input type="password" id="password" placeholder="Senha" required />
+        <input type="email" id="login-email" placeholder="E-mail" required />
+        <input type="password" id="login-password" placeholder="Senha" required />
         <button type="submit">Entrar</button>
       </form>
     </section>
 
-    <!-- CADASTRO -->
     <section class="card">
       <h2>Cadastrar</h2>
       <form id="signup-form">
         <input type="text" id="signup-name" placeholder="Seu nome" required />
         <input type="email" id="signup-email" placeholder="E-mail" required />
-        <input type="password" id="signup-password" placeholder="Senha (mínimo 6 caracteres)" required />
+        <input type="password" id="signup-password" placeholder="Senha (mínimo 6 caracteres)" minlength="6" required />
         <button type="submit">Criar conta</button>
       </form>
     </section>
 
     <p id="status"></p>
-    <small>Versão Beta - Dados em nuvem (Firebase Firestore)</small>
+    <small>Versão Beta local – dados salvos apenas neste navegador (sem Firebase por enquanto).</small>
   </main>
 
-  <!-- Firebase Config -->
-  <script type="module" src="js/firebase.js"></script>
-
-  <!-- Autenticação -->
-  <script type="module">
-    import { register, login, observeAuth } from "./js/auth.js";
+  <script>
+    // Chaves usadas no localStorage
+    const USER_KEY = "gf_user";
+    const LOGGED_KEY = "gf_logged";
 
     const statusEl = document.getElementById("status");
+    const loginForm = document.getElementById("login-form");
+    const signupForm = document.getElementById("signup-form");
 
-    // Cadastro
-    document.getElementById("signup-form").addEventListener("submit", async (e) => {
+    function showStatus(msg, isError = false) {
+      statusEl.textContent = msg;
+      statusEl.style.color = isError ? "red" : "green";
+    }
+
+    // Se já estiver logado, manda direto pro dashboard
+    const alreadyLogged = localStorage.getItem(LOGGED_KEY) === "true";
+    if (alreadyLogged) {
+      window.location.href = "dashboard.html";
+    }
+
+    // CADASTRO (salva usuário básico no localStorage)
+    signupForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const nome = document.getElementById("signup-name").value;
-      const email = document.getElementById("signup-email").value;
+
+      const nome = document.getElementById("signup-name").value.trim();
+      const email = document.getElementById("signup-email").value.trim();
       const password = document.getElementById("signup-password").value;
 
-      const res = await register(email, password, nome);
-      statusEl.innerText = res.message;
+      if (password.length < 6) {
+        showStatus("A senha deve ter pelo menos 6 caracteres.", true);
+        return;
+      }
+
+      const user = { nome, email, password };
+      localStorage.setItem(USER_KEY, JSON.stringify(user));
+
+      showStatus("Conta criada com sucesso! Agora faça login.", false);
+      signupForm.reset();
     });
 
-    // Login
-    document.getElementById("login-form").addEventListener("submit", async (e) => {
+    // LOGIN (valida contra o usuário salvo no localStorage)
+    loginForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
 
-      const res = await login(email, password);
-      statusEl.innerText = res.message;
+      const email = document.getElementById("login-email").value.trim();
+      const password = document.getElementById("login-password").value;
 
-      if (res.success) {
-        location.href = "dashboard.html";
+      const stored = localStorage.getItem(USER_KEY);
+      if (!stored) {
+        showStatus("Nenhum usuário cadastrado ainda. Crie uma conta primeiro.", true);
+        return;
+      }
+
+      const user = JSON.parse(stored);
+
+      if (user.email === email && user.password === password) {
+        localStorage.setItem(LOGGED_KEY, "true");
+        showStatus("Login realizado! Redirecionando...", false);
+        window.location.href = "dashboard.html";
+      } else {
+        showStatus("E-mail ou senha incorretos.", true);
       }
     });
-
-    // Se já estiver logado, vai direto para Dashboard
-    observeAuth((user) => {
-      if (user) location.href = "dashboard.html";
-    });
   </script>
-
 </body>
-
 </html>
