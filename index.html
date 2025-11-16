@@ -7,34 +7,57 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="container">
+  <main class="container auth-container">
     <h1>Gestor Financeiro</h1>
+    <p class="subtitle">Controle simples e inteligente das suas finanças.</p>
 
     <section class="card">
       <h2>Entrar</h2>
       <form id="login-form">
-        <input type="email" id="login-email" placeholder="E-mail" required />
-        <input type="password" id="login-password" placeholder="Senha" required />
+        <label for="login-email">E-mail</label>
+        <input type="email" id="login-email" placeholder="seuemail@exemplo.com" required />
+
+        <label for="login-password">Senha</label>
+        <input type="password" id="login-password" placeholder="Sua senha" required />
+
         <button type="submit">Entrar</button>
       </form>
     </section>
 
     <section class="card">
-      <h2>Cadastrar</h2>
+      <h2>Criar conta</h2>
       <form id="signup-form">
+        <label for="signup-name">Nome</label>
         <input type="text" id="signup-name" placeholder="Seu nome" required />
-        <input type="email" id="signup-email" placeholder="E-mail" required />
-        <input type="password" id="signup-password" placeholder="Senha (mínimo 6 caracteres)" minlength="6" required />
+
+        <label for="signup-email">E-mail</label>
+        <input type="email" id="signup-email" placeholder="seuemail@exemplo.com" required />
+
+        <label for="signup-password">Senha</label>
+        <input
+          type="password"
+          id="signup-password"
+          placeholder="Mínimo 6 caracteres"
+          minlength="6"
+          required
+        />
+
         <button type="submit">Criar conta</button>
       </form>
     </section>
 
     <p id="status"></p>
-    <small>Versão Beta local – dados salvos apenas neste navegador (sem Firebase por enquanto).</small>
+    <small class="beta-note">
+      Versão Beta local – seus dados ficam salvos apenas neste navegador.
+    </small>
+
+    <footer class="auth-footer">
+      <a href="Termos_de_Uso.txt" target="_blank">Termos de Uso</a> ·
+      <a href="Politica_de_Privacidade.txt" target="_blank">Política de Privacidade</a>
+    </footer>
   </main>
 
   <script>
-    // Chaves usadas no localStorage
     const USER_KEY = "gf_user";
     const LOGGED_KEY = "gf_logged";
 
@@ -47,13 +70,11 @@
       statusEl.style.color = isError ? "red" : "green";
     }
 
-    // Se já estiver logado, manda direto pro dashboard
     const alreadyLogged = localStorage.getItem(LOGGED_KEY) === "true";
     if (alreadyLogged) {
       window.location.href = "dashboard.html";
     }
 
-    // CADASTRO (salva usuário básico no localStorage)
     signupForm.addEventListener("submit", (e) => {
       e.preventDefault();
 
@@ -73,7 +94,6 @@
       signupForm.reset();
     });
 
-    // LOGIN (valida contra o usuário salvo no localStorage)
     loginForm.addEventListener("submit", (e) => {
       e.preventDefault();
 
