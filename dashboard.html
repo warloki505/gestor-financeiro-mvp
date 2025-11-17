@@ -6,7 +6,9 @@
   <title>Gestor Financeiro - Dashboard</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+  <!-- TOPO -->
   <header class="topbar">
     <div class="container topbar-inner">
       <div class="topbar-left">
@@ -21,6 +23,7 @@
   </header>
 
   <main class="container main-dashboard">
+
     <!-- PERFIL FINANCEIRO -->
     <section class="card">
       <h2>Perfil financeiro e renda</h2>
@@ -33,17 +36,12 @@
             <option value="padrao">Padrão (50/20/15/15)</option>
           </select>
         </div>
+
         <div>
           <label for="renda-mensal">Renda do mês (R$)</label>
-          <input
-            type="number"
-            id="renda-mensal"
-            min="0"
-            step="0.01"
-            placeholder="Ex: 4000,00"
-            required
-          />
+          <input type="number" id="renda-mensal" min="0" step="0.01" placeholder="Ex: 4000,00" required />
         </div>
+
         <div class="perfil-actions">
           <button type="submit">Salvar perfil</button>
           <small id="perfil-status" class="hint"></small>
@@ -73,9 +71,9 @@
       </div>
     </section>
 
-    <!-- RESUMO MENSAL -->
+    <!-- RESUMO -->
     <section class="card">
-      <h2>Resumo do mês atual</h2>
+      <h2>Resumo do mês</h2>
       <div class="resumo-grid">
         <div class="resumo-card">
           <span>Renda total</span>
@@ -112,139 +110,7 @@
     <section class="card">
       <h2>Novo lançamento</h2>
       <form id="tx-form" class="tx-grid">
+
         <div>
           <label for="tx-data">Data</label>
-          <input type="date" id="tx-data" required />
-        </div>
-
-        <div>
-          <label for="tx-valor">Valor (R$)</label>
-          <input type="number" id="tx-valor" step="0.01" min="0" required />
-        </div>
-
-        <div>
-          <label for="tx-categoria">Categoria</label>
-          <select id="tx-categoria" required>
-            <option value="">Selecione...</option>
-            <option value="salario">Salário</option>
-            <option value="renda_extra">Renda extra</option>
-            <option value="ferias">Férias</option>
-            <option value="alimentacao">Alimentação</option>
-            <option value="saude">Saúde</option>
-            <option value="educacao">Educação</option>
-            <option value="transporte">Transporte</option>
-            <option value="assinaturas">Assinaturas e Streaming</option>
-            <option value="lazer">Lazer</option>
-            <option value="vestuario">Vestuário</option>
-            <option value="reserva_pessoal">Reserva pessoal</option>
-            <option value="cartao">Cartão</option>
-          </select>
-        </div>
-
-        <div>
-          <label>Grupo</label>
-          <input type="text" id="tx-grupo" readonly placeholder="Definido pela categoria" />
-        </div>
-
-        <div>
-          <label>Tipo</label>
-          <div class="radio-row">
-            <label><input type="radio" name="tx-tipo" value="entrada" checked /> Entrada</label>
-            <label><input type="radio" name="tx-tipo" value="saida" /> Saída</label>
-          </div>
-        </div>
-
-        <div>
-          <label for="tx-forma">Forma de pagamento</label>
-          <select id="tx-forma">
-            <option value="">Não informado</option>
-            <option value="dinheiro">Dinheiro</option>
-            <option value="debito">Débito</option>
-            <option value="credito">Crédito</option>
-            <option value="pix">PIX</option>
-            <option value="boleto">Boleto</option>
-          </select>
-        </div>
-
-        <div class="tx-full">
-          <label for="tx-descricao">Descrição</label>
-          <input type="text" id="tx-descricao" placeholder="Ex: Mercado, aluguel, cinema..." />
-        </div>
-
-        <div>
-          <label>
-            <input type="checkbox" id="tx-fixo" />
-            Despesa fixa (se repete todo mês)
-          </label>
-        </div>
-
-        <div class="tx-actions">
-          <button type="submit" id="tx-submit">Salvar lançamento</button>
-          <button type="button" id="tx-cancel-edit" class="btn-secondary hidden">
-            Cancelar edição
-          </button>
-          <small id="tx-status" class="hint"></small>
-        </div>
-      </form>
-    </section>
-
-    <!-- EXTRATO -->
-    <section class="card">
-      <h2>Extrato de lançamentos</h2>
-
-      <div class="filter-row">
-        <div>
-          <label for="filtro-tipo">Tipo</label>
-          <select id="filtro-tipo">
-            <option value="">Todos</option>
-            <option value="entrada">Entradas</option>
-            <option value="saida">Saídas</option>
-          </select>
-        </div>
-        <div>
-          <label for="filtro-grupo">Grupo</label>
-          <select id="filtro-grupo">
-            <option value="">Todos</option>
-            <option value="RENDA">Renda</option>
-            <option value="Essenciais">Essenciais</option>
-            <option value="Livres">Livres</option>
-            <option value="Poupança">Poupança</option>
-            <option value="Dívidas">Dívidas</option>
-          </select>
-        </div>
-        <div>
-          <label for="filtro-mes">Mês</label>
-          <input type="month" id="filtro-mes" />
-        </div>
-      </div>
-
-      <div class="table-wrapper">
-        <table class="tx-table">
-          <thead>
-            <tr>
-              <th>Data</th>
-              <th>Descrição</th>
-              <th>Categoria</th>
-              <th>Grupo</th>
-              <th>Tipo</th>
-              <th>Valor</th>
-              <th>Forma</th>
-              <th>Fix?</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody id="tx-tbody">
-            <tr>
-              <td colspan="9" class="empty-row">
-                Nenhum lançamento cadastrado ainda.
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-  </main>
-
-  <script src="dashboard.js"></script>
-</body>
-</html>
+          <input type="date" id="tx-data
