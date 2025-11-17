@@ -1,1 +1,64 @@
-Política de Privacidade - arquivo incluso. Veja /docs for details.
+Política de Privacidade – Gestor Financeiro Pessoal (Versão Beta)
+
+1. Visão geral
+Esta Política de Privacidade explica como os dados são tratados na versão Beta do Gestor Financeiro Pessoal.
+
+O objetivo principal desta fase é testar a usabilidade da ferramenta com familiares, amigos e convidados, sem coleta de dados sensíveis em servidor próprio.
+
+2. Tipo de dados tratados
+A ferramenta pode lidar com os seguintes tipos de informações:
+
+• Dados de cadastro:
+  – Nome
+  – E-mail
+  – Senha (apenas na versão local, armazenada no próprio navegador)
+
+• Dados financeiros:
+  – Receitas (ex.: salário, renda extra)
+  – Despesas (ex.: alimentação, transporte, lazer)
+  – Poupança
+  – Dívidas
+  – Categoria, data, forma de pagamento, descrição
+
+3. Onde os dados são armazenados
+Na versão atual (MVP / Beta):
+
+• Os dados são armazenados apenas no dispositivo do usuário, via localStorage do navegador.
+• Não há envio automático de dados para servidores externos do desenvolvedor.
+• A exclusão do histórico do navegador ou o uso em outro dispositivo fará com que os dados locais não estejam mais disponíveis.
+
+Fases futuras do projeto poderão utilizar serviços externos (como Firebase) para login e salvamento em nuvem. Quando isso acontecer, esta Política será atualizada.
+
+4. Como os dados são usados
+Os dados inseridos são usados exclusivamente para:
+
+• Calcular saldos e totais por grupo (Essenciais, Livres, Poupança, Dívidas).
+• Exibir resumos e comparações de previsto x realizado.
+• Ajudar o usuário a entender melhor seus hábitos financeiros.
+
+Os dados não são vendidos, alugados ou compartilhados com terceiros.
+
+5. Senhas e segurança
+Na versão local:
+
+• As credenciais (e-mail e senha) são salvas apenas no localStorage do navegador para efeito de login básico.
+• Recomenda-se não reutilizar senhas importantes de outros serviços.
+• Em versões futuras com autenticação real (ex.: Firebase), serão adotadas as práticas de segurança recomendadas pela plataforma utilizada.
+
+6. Direitos do usuário
+Como usuário da versão Beta, você pode:
+
+• Parar de usar o sistema a qualquer momento.
+• Limpar os dados do navegador (limpando o localStorage, cookies e histórico).
+• Enviar feedback ao autor para melhoria da ferramenta.
+
+7. Cookies e tecnologias similares
+Esta versão não utiliza cookies de rastreamento para fins de publicidade.
+Podem ser usados apenas recursos de armazenamento local padrão do navegador (localStorage) para salvar sua sessão e dados financeiros.
+
+8. Alterações nesta Política
+Esta Política pode ser atualizada conforme o projeto evoluir (ex.: inclusão de login em nuvem, planos premium etc.).
+A versão mais recente estará sempre disponível no arquivo de Política de Privacidade do projeto.
+
+9. Contato
+Em caso de dúvidas sobre privacidade, entre em contato diretamente com o autor do projeto.
