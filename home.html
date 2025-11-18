@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestor Financeiro - Início</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div>
+        <h1>Gestor Financeiro</h1>
+        <div id="userInfo" class="user-info"></div>
+      </div>
+      <div class="topbar-right">
+        <button id="logout">Sair</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-dashboard">
+    <section class="card">
+      <h2>Menu inicial</h2>
+      <p class="hint">
+        Escolha o que deseja fazer. Este app segue a lógica da sua planilha Meu Caixa.
+      </p>
+      <div class="menu-grid">
+        <a href="perfil.html" class="menu-card">
+          <h3>Ver / Alterar perfil financeiro</h3>
+          <p>Definir perfil (Poupador, Responsável, Padrão) e renda do mês.</p>
+        </a>
+        <a href="dashboard.html" class="menu-card">
+          <h3>Dashboard e lançamentos</h3>
+          <p>Registrar receitas e despesas e ver o resumo do mês.</p>
+        </a>
+        <a href="historico.html" class="menu-card">
+          <h3>Histórico de meses</h3>
+          <p>Em breve: visão geral dos meses anteriores.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Resumo rápido do perfil</h2>
+      <div id="perfilResumo" class="perfil-resumo">
+        <p class="hint">Cadastre seu perfil financeiro na tela "Ver / Alterar perfil financeiro".</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/helpers.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

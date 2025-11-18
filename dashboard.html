@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestor Financeiro - Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div>
+        <h1>Dashboard</h1>
+        <div id="userInfo" class="user-info"></div>
+      </div>
+      <div class="topbar-right">
+        <a href="home.html" class="link-topbar">Início</a>
+        <button id="logout">Sair</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-dashboard">
+
+    <section class="card">
+      <h2>Resumo do mês</h2>
+      <p id="alerta-perfil" class="alert alert-warning hidden">
+        Defina primeiro seu perfil financeiro e renda na tela de Perfil.
+      </p>
+      <div class="resumo-grid">
+        <div class="resumo-card">
+          <span>Renda total</span>
+          <strong id="res-renda">R$ 0,00</strong>
+        </div>
+        <div class="resumo-card">
+          <span>Despesas Essenciais</span>
+          <strong id="res-essenciais">R$ 0,00</strong>
+          <small id="res-essenciais-status" class="badge badge-neutral">–</small>
+        </div>
+        <div class="resumo-card">
+          <span>Despesas Livres</span>
+          <strong id="res-livres">R$ 0,00</strong>
+          <small id="res-livres-status" class="badge badge-neutral">–</small>
+        </div>
+        <div class="resumo-card">
+          <span>Poupança</span>
+          <strong id="res-poupanca">R$ 0,00</strong>
+          <small id="res-poupanca-status" class="badge badge-neutral">–</small>
+        </div>
+        <div class="resumo-card">
+          <span>Dívidas</span>
+          <strong id="res-dividas">R$ 0,00</strong>
+          <small id="res-dividas-status" class="badge badge-neutral">–</small>
+        </div>
+        <div class="resumo-card resumo-saldo">
+          <span>Saldo do mês</span>
+          <strong id="res-saldo">R$ 0,00</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Novo lançamento</h2>
+      <form id="tx-form" class="tx-grid">
+        <div>
+          <label for="tx-data">Data</label>
+          <input type="date" id="tx-data" required />
+        </div>
+
+        <div>
+          <label for="tx-valor">Valor (R$)</label>
+          <input type="number" id="tx-valor" step="0.01" min="0" required />
+        </div>
+
+        <div>
+          <label for="tx-tipo">Tipo</label>
+          <select id="tx-tipo" required>
+            <option value="entrada">Entrada</option>
+            <option value="saida">Saída</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="tx-categoria">Categoria</label>
+          <select id="tx-categoria" required>
+            <option value="">Selecione...</option>
+            <option value="salario">Salário</option>
+            <option value="renda_extra">Renda extra</option>
+            <option value="ferias">Férias</option>
+            <option value="alimentacao">Alimentação</option>
+            <option value="saude">Saúde</option>
+            <option value="educacao">Educação</option>
+            <option value="transporte">Transporte</option>
+            <option value="assinaturas">Assinaturas e Streaming</option>
+            <option value="lazer">Lazer</option>
+            <option value="vestuario">Vestuário</option>
+            <option value="reserva_pessoal">Reserva pessoal</option>
+            <option value="cartao">Cartão</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Grupo</label>
+          <input type="text" id="tx-grupo" placeholder="Definido pela categoria" readonly />
+        </div>
+
+        <div>
+          <label for="tx-forma">Banco / Cartão</label>
+          <input type="text" id="tx-forma" placeholder="Ex: Nubank, Itaú, Carteira..." />
+        </div>
+
+        <div class="tx-full">
+          <label for="tx-descricao">Descrição</label>
+          <input type="text" id="tx-descricao" placeholder="Ex: Mercado, aluguel, cinema..." />
+        </div>
+
+        <div>
+          <label>
+            <input type="checkbox" id="tx-fixo" />
+            Lançamento fixo (mensal)
+          </label>
+        </div>
+
+        <div class="tx-actions">
+          <button type="submit" id="tx-submit">Salvar lançamento</button>
+          <button type="button" id="tx-cancel-edit" class="btn-secondary hidden">Cancelar edição</button>
+          <small id="tx-status" class="hint"></small>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Extrato de lançamentos</h2>
+
+      <div class="filter-row">
+        <div>
+          <label for="filtro-tipo">Tipo</label>
+          <select id="filtro-tipo">
+            <option value="">Todos</option>
+            <option value="entrada">Entradas</option>
+            <option value="saida">Saídas</option>
+          </select>
+        </div>
+        <div>
+          <label for="filtro-grupo">Grupo</label>
+          <select id="filtro-grupo">
+            <option value="">Todos</option>
+            <option value="RENDA">Renda</option>
+            <option value="Essenciais">Despesas Essenciais</option>
+            <option value="Livres">Despesas Livres</option>
+            <option value="Poupanca">Poupança</option>
+            <option value="Dividas">Dívidas</option>
+          </select>
+        </div>
+        <div>
+          <label for="filtro-mes">Mês</label>
+          <input type="month" id="filtro-mes" />
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="tx-table">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Descrição</th>
+              <th>Categoria</th>
+              <th>Grupo</th>
+              <th>Tipo</th>
+              <th>Valor</th>
+              <th>Banco/Cartão</th>
+              <th>Fixo</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="tx-tbody">
+            <tr>
+              <td colspan="9" class="empty-row">Nenhum lançamento cadastrado ainda.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/helpers.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

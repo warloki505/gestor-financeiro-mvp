@@ -1,0 +1,426 @@
+:root {
+  --bg: #f3f6f9;
+  --card: #ffffff;
+  --primary: #0056b3;
+  --primary-soft: #e6f0ff;
+  --text: #222;
+  --muted: #6c757d;
+  --border: #dde3ea;
+  --green: #2e7d32;
+  --yellow: #f9a825;
+  --red: #c62828;
+}
+
+/* RESET */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.bg-main {
+  background: radial-gradient(circle at top, #e3f2fd 0, #f3f6f9 45%);
+}
+
+h1, h2, h3 {
+  margin: 0 0 12px 0;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1080px;
+  margin: 20px auto;
+  padding: 0 12px;
+}
+
+/* AUTH */
+.auth-container {
+  max-width: 480px;
+  text-align: center;
+}
+
+.auth-container h1 {
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.status {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+/* CARDS */
+.card {
+  background: var(--card);
+  padding: 16px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+/* FORM */
+label {
+  display: block;
+  text-align: left;
+  font-size: 13px;
+  margin-bottom: 4px;
+  color: var(--muted);
+}
+
+input,
+select,
+button {
+  font-size: 15px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px rgba(0, 86, 179, 0.15);
+}
+
+/* BUTTONS */
+button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+button:hover {
+  opacity: 0.96;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.btn-small {
+  width: auto;
+  padding: 4px 8px;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+/* TOPBAR */
+.topbar {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+  padding: 8px 0;
+}
+
+.topbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topbar h1 {
+  font-size: 20px;
+}
+
+.user-info {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.link-topbar {
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+/* TEXTOS AUXILIARES */
+.hint {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.beta-note {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* MENU INICIAL */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.menu-card {
+  display: block;
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  transition: transform 0.1s ease, box-shadow 0.1s ease, border-color 0.1s ease;
+}
+
+.menu-card h3 {
+  margin-bottom: 4px;
+  font-size: 16px;
+}
+
+.menu-card p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.menu-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+  border-color: var(--primary);
+}
+
+/* PERFIL */
+.perfil-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  align-items: end;
+}
+
+.perfil-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.perfil-resumo {
+  font-size: 14px;
+}
+
+/* PREVISTO */
+.previsto-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.previsto-item {
+  background: var(--primary-soft);
+  padding: 8px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.previsto-item span {
+  display: block;
+  color: var(--muted);
+}
+
+.previsto-item strong {
+  display: block;
+  margin-top: 4px;
+}
+
+/* RESUMO MENSAL */
+.resumo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.resumo-card {
+  background: #f9fafb;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.resumo-card span {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.resumo-card strong {
+  display: block;
+  font-size: 16px;
+}
+
+.resumo-saldo {
+  background: #e8f5e9;
+  border-color: #c8e6c9;
+}
+
+/* BADGES */
+.badge {
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 11px;
+}
+
+.badge-neutral {
+  background: #eceff1;
+  color: #546e7a;
+}
+
+.badge-green {
+  background: #e8f5e9;
+  color: var(--green);
+}
+
+.badge-yellow {
+  background: #fffde7;
+  color: var(--yellow);
+}
+
+.badge-red {
+  background: #ffebee;
+  color: var(--red);
+}
+
+/* ALERTAS */
+.alert {
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.alert-warning {
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+  color: #8d6e63;
+}
+
+/* LANÇAMENTO */
+.tx-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px 12px;
+  align-items: flex-end;
+}
+
+.tx-full {
+  grid-column: 1 / -1;
+}
+
+.tx-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+/* FILTROS / TABELA */
+.filter-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.tx-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.tx-table th,
+.tx-table td {
+  padding: 8px;
+  border-bottom: 1px solid #edf2f7;
+  text-align: left;
+}
+
+.tx-table th {
+  background: #f8fafc;
+  font-weight: 600;
+}
+
+.tx-table tbody tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+.empty-row {
+  text-align: center;
+  color: var(--muted);
+}
+
+/* GERAL */
+.main-dashboard {
+  margin-top: 12px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .previsto-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .resumo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .topbar-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .perfil-grid,
+  .tx-grid,
+  .filter-row {
+    grid-template-columns: 1fr;
+  }
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+  .resumo-grid {
+    grid-template-columns: 1fr;
+  }
+}

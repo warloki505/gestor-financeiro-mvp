@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestor Financeiro - Perfil Financeiro</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div>
+        <h1>Perfil Financeiro</h1>
+        <div id="userInfo" class="user-info"></div>
+      </div>
+      <div class="topbar-right">
+        <a href="home.html" class="link-topbar">Início</a>
+        <button id="logout">Sair</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-dashboard">
+    <section class="card">
+      <h2>Definir perfil e renda</h2>
+      <p class="hint">
+        Esses dados serão usados para calcular os limites previstos por grupo (Essenciais, Livres, Poupança, Dívidas).
+      </p>
+      <form id="perfil-form" class="perfil-grid">
+        <div>
+          <label for="perfil-select">Perfil</label>
+          <select id="perfil-select" required>
+            <option value="poupador">Poupador (40/25/20/15)</option>
+            <option value="responsavel">Responsável (50/15/10/25)</option>
+            <option value="padrao">Padrão (50/20/15/15)</option>
+          </select>
+        </div>
+        <div>
+          <label for="renda-mensal">Renda do mês (R$)</label>
+          <input type="number" id="renda-mensal" min="0" step="0.01" placeholder="Ex: 4000,00" required />
+        </div>
+        <div class="perfil-actions">
+          <button type="submit">Salvar perfil</button>
+          <small id="perfil-status" class="hint"></small>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Limites previstos por grupo</h2>
+      <div class="previsto-grid">
+        <div class="previsto-item">
+          <span>Despesas Essenciais</span>
+          <strong id="prev-essenciais">R$ 0,00</strong>
+        </div>
+        <div class="previsto-item">
+          <span>Despesas Livres</span>
+          <strong id="prev-livres">R$ 0,00</strong>
+        </div>
+        <div class="previsto-item">
+          <span>Poupança</span>
+          <strong id="prev-poupanca">R$ 0,00</strong>
+        </div>
+        <div class="previsto-item">
+          <span>Dívidas</span>
+          <strong id="prev-dividas">R$ 0,00</strong>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/helpers.js"></script>
+  <script src="js/perfil.js"></script>
+</body>
+</html>
